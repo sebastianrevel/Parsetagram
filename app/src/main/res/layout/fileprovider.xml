@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<paths
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content" >
+    <!-- See table below.  The external-files-path DOES NOT require external storage permissions. -->
+    <external-files-path
+        android:name="images"
+        android:path="Pictures" />
+
+
+    <external-path name="all_dirs" path="."/>
+</paths>
