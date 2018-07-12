@@ -8,9 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,32 +42,47 @@ public class InstaAdapter extends RecyclerView.Adapter<InstaAdapter.ViewHolder> 
     }
     // associates a view with items
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         // get the movie data at the specified position
         Post post = posts.get(position);
         Log.v("+++++", String.format("%d", posts.size()));
         holder.tvDescription.setText(post.getDescription());
-        holder.tvDescription.setText(post.getDescription());
         holder.tvUser.setText(post.getUser().getUsername());
-//      holder.tvLikebar.setText(post.getDescription());
+        //get the profile pictures by loading users
+        post.fetchInBackground(new GetCallback<ParseObject>() {
+                                   @Override
+                                   public void done(ParseObject object, ParseException e) {
+                                       if (e == null) {
+                                           ParseUser user = (ParseUser) object.get("user");
+                                           user.fetchInBackground(new GetCallback<ParseObject>() {
+                                               @Override
+                                               public void done(ParseObject object, ParseException e) {
+                                                   if (e == null) {
+                                                       ParseFile profilepic = object.getParseFile("profileImage");
+                                                       Glide.with(context)
+                                                               .load(profilepic.getUrl())
+                                                               .into(holder.ivProfile);
+                                                   } else {
+                                                       Toast.makeText(context, "failed to get profile picture", Toast.LENGTH_LONG).show();
+                                                   }
+                                               }
+                                           });
+                                       } else {
+                                           Toast.makeText(context, "failed to get user", Toast.LENGTH_LONG).show();
+                                       }
+                                   }
+                               });
 
         // build image for post
         ParseFile postImage = post.getImage();
 
-        ParseFile profileImage = post.getPImage();
-
         String url = postImage.getUrl();
-        String PUrl = profileImage.getUrl();
 
         ImageView imageView = holder.ivPost;
-        ImageView profileView = holder.ivProfile;
         // image load
         Glide.with(context)
                 .load(url)
                 .into(imageView);
-        Glide.with(context)
-                .load(PUrl)
-                .into(profileView);
 
 
     }

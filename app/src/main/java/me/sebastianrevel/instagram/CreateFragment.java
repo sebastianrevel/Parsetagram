@@ -19,7 +19,8 @@ import java.io.File;
 import me.sebastianrevel.instagram.models.Post;
 
 public class CreateFragment extends Fragment {
-    private static final String imagePath = "/sdcard/DCIM/Camera/IMG_20180710_135954.jpg";
+    private static final String imagePath = "/storage/emulated/0/DCIM/Camera/IMG_20180712_141743.jpg";
+
     private Button createButton;
     private Button refreshButton;
     private EditText descriptionInput;
@@ -31,6 +32,7 @@ public class CreateFragment extends Fragment {
 
         refreshButton = view.findViewById(R.id.refresh_btn);
         createButton = view.findViewById(R.id.create_btn);
+        descriptionInput = view.findViewById(R.id.description_et);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override

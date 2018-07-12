@@ -58,9 +58,10 @@ public class TimelineFragment extends Fragment {
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL,
                 false));
-
-        loadTopPosts();
-
+//
+//        adapter.clear();
+//
+//        loadTopPosts();
         return view;
     }
 
@@ -91,6 +92,7 @@ public class TimelineFragment extends Fragment {
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        adapter.clear();
         loadTopPosts();
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
