@@ -10,6 +10,7 @@ import com.parse.ParseUser;
 public class Post extends ParseObject {
     private static final String KEY_DESCRIPTION = "description";
     private static final String KEY_IMAGE = "image";
+    private static final String KEY_PROFILE = "profile";
     private static final String KEY_USER = "user";
 
     public String getDescription() {
@@ -29,6 +30,15 @@ public class Post extends ParseObject {
     public void setImage(ParseFile image) {
         put(KEY_IMAGE, image);
     }
+
+    public ParseFile getPImage() {
+        return getParseFile(KEY_PROFILE);
+    }
+
+    public void setPImage(ParseFile image) {
+        put(KEY_PROFILE, image);
+    }
+
 
     public ParseUser getUser() {
         return getParseUser(KEY_USER);
