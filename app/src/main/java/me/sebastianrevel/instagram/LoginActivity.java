@@ -2,7 +2,6 @@ package me.sebastianrevel.instagram;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,12 +22,10 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        getSupportActionBar().hide();
         usernameInput = findViewById(R.id.username_et);
         passwordInput = findViewById(R.id.password_et);
         loginBtn = findViewById(R.id.login_btn);
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e == null) {
                     Log.d("LoginActivity", "Login Successful");
-                    final Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                    final Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(i);
                 } else {
                     Log.e("LoginActivity", "Login Failure");
