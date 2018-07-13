@@ -25,10 +25,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-//        if (ParseUser.getCurrentUser() != null) {
-//            final Intent i = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(i);
-//        }
+        if (ParseUser.getCurrentUser() != null) {
+            final Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(i);
+        }
 
 
         usernameInput = findViewById(R.id.username_et);

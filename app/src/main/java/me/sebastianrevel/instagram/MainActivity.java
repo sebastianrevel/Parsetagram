@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements CameraFragment.Ca
 
     Fragment fragment1 = new TimelineFragment();
     Fragment fragment2 = new CameraFragment();
-    Fragment fragment3 = new TimelineFragment();
+    Fragment fragment3 = new ProfileFragment();
 
     FrameLayout flContainer;
     BottomNavigationView bottomNavigationView;

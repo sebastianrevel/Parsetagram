@@ -56,11 +56,6 @@ public class CreateFragment extends Fragment {
                 });
             }
         });
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
 
         return view;
     }
