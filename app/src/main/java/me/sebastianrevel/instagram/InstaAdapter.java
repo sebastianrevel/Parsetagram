@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -59,9 +60,21 @@ public class InstaAdapter extends RecyclerView.Adapter<InstaAdapter.ViewHolder> 
                                                public void done(ParseObject object, ParseException e) {
                                                    if (e == null) {
                                                        ParseFile profilepic = object.getParseFile("profileImage");
-                                                       Glide.with(context)
-                                                               .load(profilepic.getUrl())
-                                                               .into(holder.ivProfile);
+                                                       if (profilepic == null) {
+                                                           Glide.with(context)
+                                                                   .load("https://www.thehindu.com/sci-tech/technology/internet/article17759222.ece/alternates/FREE_660/02th-egg-person")
+                                                                   .apply(
+                                                                           RequestOptions.circleCropTransform()
+                                                                   )
+                                                                   .into(holder.ivProfile);
+                                                       } else {
+                                                           Glide.with(context)
+                                                                   .load(profilepic.getUrl())
+                                                                   .apply(
+                                                                           RequestOptions.circleCropTransform()
+                                                                   )
+                                                                   .into(holder.ivProfile);
+                                                       }
                                                    } else {
                                                        Toast.makeText(context, "failed to get profile picture", Toast.LENGTH_LONG).show();
                                                    }

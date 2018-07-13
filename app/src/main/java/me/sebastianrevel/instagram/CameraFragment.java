@@ -67,18 +67,6 @@ public class CameraFragment extends Fragment {
                 final ParseFile parseFile = new ParseFile(file);
 
                 createPost(description, parseFile, user);
-
-//                parseFile.saveInBackground(new SaveCallback() {
-//                    @Override
-//                    public void done(ParseException e) {
-//                        if (e == null) {
-//                            Log.d("CreateFragment", "Successfully uploaded image" );
-//                            createPost(description, parseFile, user);
-//                        } else {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
             }
         });
 

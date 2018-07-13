@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements CameraFragment.Ca
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         // handle navigation selection
-         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,10 +71,8 @@ public class MainActivity extends AppCompatActivity implements CameraFragment.Ca
                             case R.id.action_profile:
                                 fragmentTransaction.replace(R.id.flContainer, fragment3).commit();
                                 return true;
-                            default:
-                                fragmentTransaction.replace(R.id.flContainer, fragment1).commit();
-                                return true;
                         }
+                        return true;
                     }
                 });
 
