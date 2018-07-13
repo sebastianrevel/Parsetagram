@@ -51,17 +51,12 @@ public class TimelineFragment extends Fragment {
         });
 
 
-
         adapter = new InstaAdapter(posts);
         rvPosts = view.findViewById(R.id.rvPost);
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL,
                 false));
-//
-//        adapter.clear();
-//
-//        loadTopPosts();
         return view;
     }
 
@@ -94,7 +89,5 @@ public class TimelineFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         adapter.clear();
         loadTopPosts();
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
     }
 }

@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(i);
         }
 
-
         usernameInput = findViewById(R.id.username_et);
         passwordInput = findViewById(R.id.password_et);
         loginBtn = findViewById(R.id.login_btn);
@@ -53,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void signup(final String username, final String password){
+    private void signup(final String username, final String password) {
         ParseUser user = new ParseUser();
         user.setUsername(username);
         Log.d("TEST", username);
@@ -72,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private void login(String username, final String password) {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override

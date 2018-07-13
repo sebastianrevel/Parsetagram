@@ -31,15 +31,6 @@ public class Post extends ParseObject {
         put(KEY_IMAGE, image);
     }
 
-    public ParseFile getPImage() {
-        return getParseFile(KEY_PROFILE);
-    }
-
-    public void setPImage(ParseFile image) {
-        put(KEY_PROFILE, image);
-    }
-
-
     public ParseUser getUser() {
         return getParseUser(KEY_USER);
     }
